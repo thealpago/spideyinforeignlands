@@ -1,0 +1,5 @@
+{
+  "name": "foreignlands",
+  "description": "A physics-based procedural animation experiment featuring a multi-legged creature traversing uneven terrain, integrated with Gemini for voice control, vision analysis, and content generation.",
+  "requestFramePermissions": []
+}

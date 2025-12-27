@@ -1,0 +1,64 @@
+{
+  "name": "procedural-spider-gemini",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Procedural Spider Walker with Gemini AI",
+  "author": "",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "electron:dev": "concurrently -k \"cross-env BROWSER=none npm run dev\" \"wait-on http://localhost:5173 && electron .\"",
+    "electron:build": "vite build && electron-builder",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "homepage": "https://<USERNAME>.github.io/<REPO_NAME>",
+  "build": {
+    "appId": "com.spiderwalker.gemini",
+    "productName": "Spider Walker Lab",
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  },
+  "dependencies": {
+    "@google/genai": "^1.33.0",
+    "@react-three/drei": "^9.108.0",
+    "@react-three/fiber": "^8.17.10",
+    "@react-three/rapier": "^1.4.0",
+    "@react-three/xr": "^6.6.28",
+    "@types/three": "^0.165.0",
+    "immer": "^11.0.1",
+    "noisejs": "^2.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.165.0",
+    "uuid": "^9.0.1",
+    "zustand": "^5.0.9"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.19",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3",
+    "gh-pages": "^6.3.0",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.3",
+    "vite": "^5.3.4",
+    "wait-on": "^7.2.0"
+  }
+}

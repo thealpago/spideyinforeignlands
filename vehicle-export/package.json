@@ -1,0 +1,27 @@
+{
+    "name": "4x4-vehicle-package",
+    "version": "1.0.0",
+    "description": "4x4 Vehicle with physics and controls for React Three.js projects",
+    "dependencies": {
+        "@react-three/drei": "^9.88.0",
+        "@react-three/fiber": "^8.15.0",
+        "@react-three/rapier": "^1.2.0",
+        "@react-three/xr": "^5.7.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "three": "^0.160.0",
+        "zustand": "^4.4.0"
+    },
+    "peerDependencies": {
+        "react": ">=18.0.0",
+        "react-dom": ">=18.0.0"
+    },
+    "keywords": [
+        "react",
+        "three.js",
+        "vehicle",
+        "physics",
+        "game",
+        "3d"
+    ]
+}

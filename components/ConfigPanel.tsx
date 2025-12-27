@@ -9,23 +9,23 @@ interface ConfigPanelProps {
     onToggle?: () => void;
 }
 
-const CollapsibleSection: React.FC<{ 
-    title: string; 
-    children: React.ReactNode; 
+const CollapsibleSection: React.FC<{
+    title: string;
+    children: React.ReactNode;
     defaultOpen?: boolean;
 }> = ({ title, children, defaultOpen = false }) => {
     const [isOpen, setIsOpen] = useState(defaultOpen);
 
     return (
         <div className="border-t border-white/10 pt-2 first:border-0 first:pt-0">
-            <button 
+            <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full flex justify-between items-center text-[10px] text-gray-400 font-mono tracking-wider hover:text-white transition-colors py-1"
+                className="w-full flex justify-between items-center text-[10px] text-white font-mono tracking-wider hover:text-white transition-colors py-1"
             >
                 <span>{title}</span>
                 <span className="opacity-50 transition-transform duration-200 transform">{isOpen ? '[-]' : '[+]'}</span>
             </button>
-            
+
             <div className={`space-y-3 transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? 'mt-3 max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
                 {children}
             </div>
@@ -51,11 +51,11 @@ const ConfigPanel: React.FC<ConfigPanelProps> = ({ config, onChange, buttonClass
             console.error("Failed to copy configuration", err);
         }
     };
-    
+
     const activeStyle = 'bg-white/10 text-white border-white/30 shadow-[0_0_15px_rgba(255,255,255,0.2)]';
-    const defaultStyle = `p-3 rounded-xl transition-all duration-300 ${isOpen ? 'bg-white/10 text-white shadow-[0_0_15px_rgba(255,255,255,0.1)]' : 'text-gray-400 hover:text-white hover:bg-white/5'}`;
-    
-    const buttonClass = buttonClassName 
+    const defaultStyle = `p-3 rounded-xl transition-all duration-300 ${isOpen ? 'bg-white/10 text-white shadow-[0_0_15px_rgba(255,255,255,0.1)]' : 'text-white hover:text-white hover:bg-white/5'}`;
+
+    const buttonClass = buttonClassName
         ? `${buttonClassName} ${isOpen ? activeStyle : ''}`
         : defaultStyle;
 
@@ -75,34 +75,34 @@ const ConfigPanel: React.FC<ConfigPanelProps> = ({ config, onChange, buttonClass
                         <button
                             onClick={handleCopy}
                             title="Copy JSON"
-                            className={`text-[9px] px-1.5 py-0.5 rounded border transition-all duration-200 font-mono tracking-wide ${copied ? 'border-green-500/50 text-green-400 bg-green-500/10' : 'border-white/20 text-gray-400 hover:text-white hover:border-white/40 hover:bg-white/5'}`}
+                            className={`text-[9px] px-1.5 py-0.5 rounded border transition-all duration-200 font-mono tracking-wide ${copied ? 'border-green-500/50 text-green-400 bg-green-500/10' : 'border-white/20 text-white hover:text-white hover:border-white/40 hover:bg-white/5'}`}
                         >
                             {copied ? 'COPIED' : 'JSON'}
                         </button>
                     </div>
                 </div>
-                
+
                 <div className="space-y-4">
                     {/* Sun Settings */}
                     <CollapsibleSection title="SOLAR DYNAMICS" defaultOpen={true}>
                         <div className="grid grid-cols-2 gap-2">
                             <div className="space-y-1">
-                                <span className="text-[9px] text-gray-400 font-mono">COLOR</span>
+                                <span className="text-[9px] text-white font-mono">COLOR</span>
                                 <div className="flex items-center gap-2 bg-white/5 p-1 rounded border border-white/5">
-                                    <input 
-                                        type="color" 
-                                        value={config.colorSun} 
+                                    <input
+                                        type="color"
+                                        value={config.colorSun}
                                         onChange={(e) => handleChange('colorSun', e.target.value)}
                                         className="bg-transparent w-full h-4 cursor-pointer"
                                     />
                                 </div>
                             </div>
-                                <div className="space-y-1">
-                                <div className="flex justify-between text-[9px] text-gray-400 font-mono">
+                            <div className="space-y-1">
+                                <div className="flex justify-between text-[9px] text-white font-mono">
                                     <span>ELEVATION</span>
                                     <span>{config.sunElevation.toFixed(2)}</span>
                                 </div>
-                                <input 
+                                <input
                                     type="range" min="-0.2" max="1.0" step="0.01"
                                     value={config.sunElevation}
                                     onChange={(e) => handleChange('sunElevation', parseFloat(e.target.value))}
@@ -113,10 +113,10 @@ const ConfigPanel: React.FC<ConfigPanelProps> = ({ config, onChange, buttonClass
 
                         <div className="bg-white/5 p-2 rounded border border-white/5 space-y-2">
                             <div className="flex justify-between items-center">
-                                <span className="text-[9px] text-gray-400 font-mono">AZIMUTH</span>
+                                <span className="text-[9px] text-white font-mono">AZIMUTH</span>
                                 <div className="flex items-center gap-2">
-                                    <label className="text-[8px] text-gray-500 uppercase">Auto</label>
-                                    <input 
+                                    <label className="text-[8px] text-white uppercase">Auto</label>
+                                    <input
                                         type="checkbox"
                                         checked={config.autoRotate}
                                         onChange={(e) => handleChange('autoRotate', e.target.checked)}
@@ -124,7 +124,7 @@ const ConfigPanel: React.FC<ConfigPanelProps> = ({ config, onChange, buttonClass
                                     />
                                 </div>
                             </div>
-                            <input 
+                            <input
                                 type="range" min="0" max={Math.PI * 2} step="0.01"
                                 value={config.sunAzimuth}
                                 onChange={(e) => handleChange('sunAzimuth', parseFloat(e.target.value))}
@@ -138,10 +138,10 @@ const ConfigPanel: React.FC<ConfigPanelProps> = ({ config, onChange, buttonClass
                     <CollapsibleSection title="TERRAIN">
                         <div className="space-y-2">
                             <div className="flex justify-between items-center bg-white/5 p-2 rounded border border-white/5">
-                                <span className="text-[9px] text-gray-400 font-mono">COLOR</span>
-                                <input 
-                                    type="color" 
-                                    value={config.terrainColor} 
+                                <span className="text-[9px] text-white font-mono">COLOR</span>
+                                <input
+                                    type="color"
+                                    value={config.terrainColor}
                                     onChange={(e) => handleChange('terrainColor', e.target.value)}
                                     className="bg-transparent w-6 h-6 cursor-pointer"
                                 />
@@ -153,22 +153,22 @@ const ConfigPanel: React.FC<ConfigPanelProps> = ({ config, onChange, buttonClass
                     <CollapsibleSection title="COLORS">
                         <div className="grid grid-cols-2 gap-2">
                             <div className="space-y-1">
-                                <span className="text-[9px] text-gray-400 font-mono block">HORIZON</span>
+                                <span className="text-[9px] text-white font-mono block">HORIZON</span>
                                 <div className="flex items-center gap-2 bg-white/5 p-1 rounded border border-white/5">
-                                    <input 
-                                        type="color" 
-                                        value={config.colorHorizon} 
+                                    <input
+                                        type="color"
+                                        value={config.colorHorizon}
                                         onChange={(e) => handleChange('colorHorizon', e.target.value)}
                                         className="bg-transparent w-full h-4 cursor-pointer"
                                     />
                                 </div>
                             </div>
                             <div className="space-y-1">
-                                <span className="text-[9px] text-gray-400 font-mono block">SPACE</span>
-                                    <div className="flex items-center gap-2 bg-white/5 p-1 rounded border border-white/5">
-                                    <input 
-                                        type="color" 
-                                        value={config.colorSpace} 
+                                <span className="text-[9px] text-white font-mono block">SPACE</span>
+                                <div className="flex items-center gap-2 bg-white/5 p-1 rounded border border-white/5">
+                                    <input
+                                        type="color"
+                                        value={config.colorSpace}
                                         onChange={(e) => handleChange('colorSpace', e.target.value)}
                                         className="bg-transparent w-full h-4 cursor-pointer"
                                     />

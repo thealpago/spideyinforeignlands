@@ -9,23 +9,23 @@ interface PhysicsPanelProps {
     onToggle?: () => void;
 }
 
-const CollapsibleSection: React.FC<{ 
-    title: string; 
-    children: React.ReactNode; 
+const CollapsibleSection: React.FC<{
+    title: string;
+    children: React.ReactNode;
     defaultOpen?: boolean;
 }> = ({ title, children, defaultOpen = false }) => {
     const [isOpen, setIsOpen] = useState(defaultOpen);
 
     return (
         <div className="border-t border-white/10 pt-2 first:border-0 first:pt-0">
-            <button 
+            <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full flex justify-between items-center text-[10px] text-gray-400 font-mono tracking-wider hover:text-white transition-colors py-1"
+                className="w-full flex justify-between items-center text-[10px] text-white font-mono tracking-wider hover:text-white transition-colors py-1"
             >
                 <span>{title}</span>
                 <span className="opacity-50 transition-transform duration-200 transform">{isOpen ? '[-]' : '[+]'}</span>
             </button>
-            
+
             <div className={`space-y-3 transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? 'mt-3 max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
                 {children}
             </div>
@@ -42,11 +42,11 @@ const RangeControl: React.FC<{
     onChange: (val: number) => void;
 }> = ({ label, value, min, max, step, onChange }) => (
     <div className="space-y-1">
-        <div className="flex justify-between text-[9px] text-gray-400 font-mono">
+        <div className="flex justify-between text-[9px] text-white font-mono">
             <span>{label}</span>
             <span>{value.toFixed(2)}</span>
         </div>
-        <input 
+        <input
             type="range" min={min} max={max} step={step}
             value={value}
             onChange={(e) => onChange(parseFloat(e.target.value))}
@@ -73,11 +73,11 @@ const PhysicsPanel: React.FC<PhysicsPanelProps> = ({ config, onChange, buttonCla
             console.error("Failed to copy configuration", err);
         }
     };
-    
+
     const activeStyle = 'bg-white/10 text-white border-white/30 shadow-[0_0_15px_rgba(255,255,255,0.2)]';
-    const defaultStyle = `p-3 rounded-xl transition-all duration-300 ${isOpen ? 'bg-white/10 text-white shadow-[0_0_15px_rgba(255,255,255,0.1)]' : 'text-gray-400 hover:text-white hover:bg-white/5'}`;
-    
-    const buttonClass = buttonClassName 
+    const defaultStyle = `p-3 rounded-xl transition-all duration-300 ${isOpen ? 'bg-white/10 text-white shadow-[0_0_15px_rgba(255,255,255,0.1)]' : 'text-white hover:text-white hover:bg-white/5'}`;
+
+    const buttonClass = buttonClassName
         ? `${buttonClassName} ${isOpen ? activeStyle : ''}`
         : defaultStyle;
 
@@ -90,7 +90,7 @@ const PhysicsPanel: React.FC<PhysicsPanelProps> = ({ config, onChange, buttonCla
                 transition-all duration-300 ease-in-out 
                 ${isOpen ? 'opacity-100 scale-100 pointer-events-auto translate-y-0' : 'opacity-0 scale-95 pointer-events-none translate-y-2'}
             `}>
-                
+
                 {/* Header */}
                 <div className="flex justify-between items-center mb-4 border-b border-transparent pb-2">
                     <h3 className="text-xs font-mono text-white font-bold tracking-wide">PHYSICS ENGINE</h3>
@@ -98,7 +98,7 @@ const PhysicsPanel: React.FC<PhysicsPanelProps> = ({ config, onChange, buttonCla
                         <button
                             onClick={handleCopy}
                             title="Copy JSON"
-                            className={`text-[9px] px-1.5 py-0.5 rounded border transition-all duration-200 font-mono tracking-wide ${copied ? 'border-green-500/50 text-green-400 bg-green-500/10' : 'border-white/20 text-gray-400 hover:text-white hover:border-white/40 hover:bg-white/5'}`}
+                            className={`text-[9px] px-1.5 py-0.5 rounded border transition-all duration-200 font-mono tracking-wide ${copied ? 'border-green-500/50 text-green-400 bg-green-500/10' : 'border-white/20 text-white hover:text-white hover:border-white/40 hover:bg-white/5'}`}
                         >
                             {copied ? 'COPIED' : 'JSON'}
                         </button>
@@ -130,7 +130,7 @@ const PhysicsPanel: React.FC<PhysicsPanelProps> = ({ config, onChange, buttonCla
                 title="Physics Settings"
             >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M4 21v-7m0-4V3m8 18v-9m0-4V3m8 18v-5m0-4V3M1 14h6m2-6h6m2 8h6" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M4 21v-7m0-4V3m8 18v-9m0-4V3m8 18v-5m0-4V3M1 14h6m2-6h6m2 8h6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
             </button>
         </div>

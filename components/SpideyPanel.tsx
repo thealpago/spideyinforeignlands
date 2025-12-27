@@ -29,7 +29,7 @@ const CollapsibleSection: React.FC<{
         <div className="border-t border-white/10 pt-2 first:border-0 first:pt-0">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full flex justify-between items-center text-[10px] text-gray-400 font-mono tracking-wider hover:text-white transition-colors py-1"
+                className="w-full flex justify-between items-center text-[10px] text-white font-mono tracking-wider hover:text-white transition-colors py-1"
             >
                 <span>{title}</span>
                 <span className="opacity-50 transition-transform duration-200 transform">{isOpen ? '[-]' : '[+]'}</span>
@@ -51,7 +51,7 @@ const RangeControl: React.FC<{
     onChange: (val: number) => void;
 }> = ({ label, value, min, max, step, onChange }) => (
     <div className="space-y-1">
-        <div className="flex justify-between text-[9px] text-gray-400 font-mono">
+        <div className="flex justify-between text-[9px] text-white font-mono">
             <span>{label}</span>
             <span>{value.toFixed(2)}</span>
         </div>
@@ -66,7 +66,7 @@ const RangeControl: React.FC<{
 
 const ColorControl: React.FC<{ label: string; value: string; onChange: (val: string) => void }> = ({ label, value, onChange }) => (
     <div className="flex justify-between items-center bg-white/5 p-2 rounded border border-white/5">
-        <span className="text-[9px] text-gray-400 font-mono">{label}</span>
+        <span className="text-[9px] text-white font-mono">{label}</span>
         <input
             type="color"
             value={value}
@@ -107,7 +107,7 @@ export const SpideyPanel: React.FC<SpideyPanelProps> = ({
     };
 
     const activeStyle = 'bg-white/10 text-white border-white/30 shadow-[0_0_15px_rgba(255,255,255,0.2)]';
-    const defaultStyle = `flex items-center gap-2 px-4 py-3 rounded-xl transition-all duration-300 border ${isOpen ? activeStyle : 'bg-zinc-900/60 border-white/10 text-gray-400 hover:text-white hover:bg-zinc-800'}`;
+    const defaultStyle = `flex items-center gap-2 px-4 py-3 rounded-xl transition-all duration-300 border ${isOpen ? activeStyle : 'bg-zinc-900/60 border-white/10 text-white hover:text-white hover:bg-zinc-800'}`;
 
     const buttonClass = buttonClassName
         ? `${buttonClassName} ${isOpen ? activeStyle : ''}`
@@ -129,13 +129,13 @@ export const SpideyPanel: React.FC<SpideyPanelProps> = ({
                     <div className="flex bg-transparent rounded-lg p-0.5">
                         <button
                             onClick={() => setActiveTab('spider')}
-                            className={`px-3 py-1 text-[9px] font-mono rounded-md transition-all ${activeTab === 'spider' ? 'bg-white/20 text-white' : 'text-gray-500 hover:text-gray-300'}`}
+                            className={`px-3 py-1 text-[9px] font-mono rounded-md transition-all ${activeTab === 'spider' ? 'bg-white/20 text-white' : 'text-white hover:text-gray-300'}`}
                         >
                             SPIDEY
                         </button>
                         <button
                             onClick={() => setActiveTab('g_spidey')}
-                            className={`px-3 py-1 text-[9px] font-mono rounded-md transition-all ${activeTab === 'g_spidey' ? 'bg-white/20 text-white' : 'text-gray-500 hover:text-gray-300'}`}
+                            className={`px-3 py-1 text-[9px] font-mono rounded-md transition-all ${activeTab === 'g_spidey' ? 'bg-white/20 text-white' : 'text-white hover:text-gray-300'}`}
                         >
                             G-SPIDEY
                         </button>
@@ -205,9 +205,9 @@ export const SpideyPanel: React.FC<SpideyPanelProps> = ({
                     {/* 5. UTILITIES (NEW) */}
                     <CollapsibleSection title="UTILITIES">
                         <div className="flex justify-between items-center bg-white/5 p-2 rounded border border-white/5">
-                            <span className="text-[9px] text-gray-400 font-mono">SOLAR PANELS</span>
+                            <span className="text-[9px] text-white font-mono">SOLAR PANELS</span>
                             <div className="flex items-center gap-2">
-                                <span className="text-[8px] text-gray-500 uppercase">{currentVisuals.solarPanelsOpen ? 'DEPLOYED' : 'RETRACTED'}</span>
+                                <span className="text-[8px] text-white uppercase">{currentVisuals.solarPanelsOpen ? 'DEPLOYED' : 'RETRACTED'}</span>
                                 <input
                                     type="checkbox"
                                     checked={!!currentVisuals.solarPanelsOpen}

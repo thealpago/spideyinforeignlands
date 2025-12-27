@@ -22,7 +22,7 @@ const CollapsibleSection: React.FC<{
         <div className="border-b border-white/5 last:border-0 pb-4 mb-4">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full flex justify-between items-center text-[11px] text-gray-400 font-mono tracking-widest hover:text-white transition-all py-1 group"
+                className="w-full flex justify-between items-center text-[11px] text-white font-mono tracking-widest hover:text-white transition-all py-1 group"
             >
                 <div className="flex items-center gap-2">
                     {icon && <span className="opacity-50 group-hover:opacity-100 transition-opacity">{icon}</span>}
@@ -53,7 +53,7 @@ const RangeControl: React.FC<{
 }> = ({ label, value, min, max, step, unit = '', onChange }) => (
     <div className="space-y-1.5">
         <div className="flex justify-between text-[10px] font-mono">
-            <span className="text-gray-500 uppercase tracking-tighter">{label}</span>
+            <span className="text-white uppercase tracking-tighter">{label}</span>
             <span className="text-white bg-white/10 px-1.5 rounded-sm">{value.toFixed(1)}{unit}</span>
         </div>
         <input
@@ -72,7 +72,7 @@ const SelectControl: React.FC<{
     onChange: (val: string) => void;
 }> = ({ label, value, options, onChange }) => (
     <div className="space-y-1.5">
-        <label className="text-[10px] text-gray-500 font-mono block uppercase tracking-tighter">{label}</label>
+        <label className="text-[10px] text-white font-mono block uppercase tracking-tighter">{label}</label>
         <div className="relative group">
             <select
                 value={value}
@@ -100,7 +100,7 @@ const ColorControl: React.FC<{
     onChange: (val: string) => void;
 }> = ({ label, value, onChange }) => (
     <div className="flex justify-between items-center bg-white/5 p-2.5 rounded-xl border border-white/5 hover:border-white/10 transition-all">
-        <span className="text-[10px] text-gray-400 font-mono uppercase tracking-tighter">{label}</span>
+        <span className="text-[10px] text-white font-mono uppercase tracking-tighter">{label}</span>
         <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/20 shadow-inner group cursor-pointer">
             <input
                 type="color"
@@ -119,7 +119,7 @@ export const VehiclePanel: React.FC<VehiclePanelProps> = ({ config, onChange, bu
     };
 
     const activeStyle = 'bg-white/10 text-white border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.15)]';
-    const defaultStyle = `p-2 rounded-xl transition-all duration-300 ${isOpen ? 'bg-white/10 text-white shadow-[0_0_15px_rgba(255,255,255,0.1)]' : 'text-gray-400 hover:text-white hover:bg-white/5'}`;
+    const defaultStyle = `p-2 rounded-xl transition-all duration-300 ${isOpen ? 'bg-white/10 text-white shadow-[0_0_15px_rgba(255,255,255,0.1)]' : 'text-white hover:text-white hover:bg-white/5'}`;
 
     const buttonClass = buttonClassName
         ? `${buttonClassName} ${isOpen ? activeStyle : ''}`
@@ -138,7 +138,7 @@ export const VehiclePanel: React.FC<VehiclePanelProps> = ({ config, onChange, bu
                 <div className="flex justify-between items-center mb-6">
                     <div>
                         <h3 className="text-[13px] font-mono text-white font-bold tracking-[0.2em] uppercase">Vehicle Config</h3>
-                        <p className="text-[9px] text-gray-500 font-mono uppercase mt-1">4x4 Off-Road Customizer</p>
+                        <p className="text-[9px] text-white font-mono uppercase mt-1">4x4 Off-Road Customizer</p>
                     </div>
                 </div>
 
@@ -243,7 +243,7 @@ export const VehiclePanel: React.FC<VehiclePanelProps> = ({ config, onChange, bu
                 </div>
 
                 {/* Footer Info */}
-                <div className="mt-6 pt-4 border-t border-white/5 flex justify-between items-center text-[8px] font-mono text-gray-600 uppercase tracking-widest">
+                <div className="mt-6 pt-4 border-t border-white/5 flex justify-between items-center text-[8px] font-mono text-white uppercase tracking-widest">
                     <span>Advanced Physics Engine</span>
                     <span>Ready for Terrain</span>
                 </div>

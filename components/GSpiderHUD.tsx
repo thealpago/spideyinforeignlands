@@ -156,7 +156,7 @@ export const GSpiderHUD = () => {
     const containerBorder = isLowBattery ? "border-red-500/60" : "border-white/20";
     const containerBg = isLowBattery ? "bg-red-950/40" : "bg-zinc-950/60";
     const shadowStyle = isLowBattery ? "shadow-[0_0_20px_rgba(255,0,0,0.4)]" : "shadow-[0_0_15px_rgba(255,255,255,0.05)]";
-    const textColor = isLowBattery ? "text-red-500" : "text-amber-400";
+    const textColor = isLowBattery ? "text-red-500" : "text-white";
     const decoratorColor = isLowBattery ? "bg-red-500" : "bg-white/50";
     const shakeClass = isLowBattery ? "animate-[spin_0.1s_ease-in-out_infinite] origin-center" : "";
     // Wait, spin isn't shake. Let's use translate.

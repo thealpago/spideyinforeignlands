@@ -15,7 +15,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://<USERNAME>.github.io/<REPO_NAME>",
+  "homepage": "https://thealpago.github.io/spideyinforeignlands",
   "build": {
     "appId": "com.spiderwalker.gemini",
     "productName": "Spider Walker Lab",

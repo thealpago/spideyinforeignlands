@@ -74,7 +74,7 @@ const Overlay: React.FC<OverlayProps> = ({
 }) => {
     // Styles
     const ACTIVE_GRAY_STYLE = 'bg-white/10 text-white border-white/30 shadow-[0_0_15px_rgba(255,255,255,0.2)]';
-    const INACTIVE_STYLE = 'text-gray-400 hover:text-white hover:bg-white/5 border-transparent';
+    const INACTIVE_STYLE = 'text-gray-200 hover:text-white hover:bg-white/5 border-transparent';
     const NAVBAR_BG_STYLE = 'bg-transparent backdrop-blur-0 border border-transparent';
 
     // Centralized Panel State for Mutual Exclusivity

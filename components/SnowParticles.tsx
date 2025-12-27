@@ -3,12 +3,12 @@ import { useFrame } from '@react-three/fiber';
 import { Color, AdditiveBlending, Vector3 } from 'three';
 
 /**
- * SNOW PARTICLES
- * Optimized for slow drifting flakes and soft motion.
+ * ULTRA-REALISTIC BLIZZARD PARTICLES
+ * Optimized for cinematic motion-blurred streaks and turbulent drifting.
  */
 export const SnowParticles: React.FC = () => {
     const pointsRef = useRef<any>(null);
-    const count = 8000;
+    const count = 15000; // Denser blizzard
     const radius = 100;
 
     const positions = useMemo(() => {
@@ -39,49 +39,58 @@ export const SnowParticles: React.FC = () => {
     uniform float uTime;
     uniform vec3 uCameraPos;
     uniform float uHeight;
+    varying float vAlpha;
     
     void main() {
       vec3 pos = position;
       
-      // Fall Animation - Slower for snow
-      float speed = 3.0; 
-      float fallOffset = uTime * speed;
+      // Intense Blizzard Speed - Fast katabatic winds
+      float fallSpeed = 8.0; 
+      float windSpeed = 25.0;
       
-      // Wrap Y
+      float fallOffset = uTime * fallSpeed;
+      float windOffset = uTime * windSpeed;
+      
+      // Wrap and animate
       pos.y = mod(pos.y - fallOffset, uHeight);
+      pos.x += sin(pos.y * 0.1 + uTime) * 2.0; // Turbulence
       
       // Wrap X/Z around camera
-      vec3 worldPos = pos + vec3(uCameraPos.x, 0.0, uCameraPos.z);
+      vec3 worldPos = pos + vec3(uCameraPos.x - windOffset, 0.0, uCameraPos.z);
       vec3 relPos = mod(worldPos - uCameraPos, vec3(200.0, uHeight, 200.0)) - vec3(100.0, uHeight * 0.4, 100.0);
       
-      // Add more chaotic wind drift for snow
-      float windX = sin(uTime * 0.3 + pos.x) * 4.0;
-      float windZ = cos(uTime * 0.4 + pos.z) * 4.0;
-      relPos.x += windX;
-      relPos.z += windZ;
-
+      // Motion Blur Stretch based on velocity
+      // We simulate stretch by shifting vertex based on time slightly? 
+      // Actually simpler: stretched billboard in fragment
+      
       vec4 mvPosition = modelViewMatrix * vec4(uCameraPos + relPos, 1.0);
       gl_Position = projectionMatrix * mvPosition;
       
-      // Scale based on depth - snow flakes are rounder/bigger
-      gl_PointSize = 400.0 / -mvPosition.z;
+      // Scale based on distance, but keep blizzard visible
+      gl_PointSize = 600.0 / -mvPosition.z;
+      
+      // Fade out based on height to simulate ground fog/blizzard density
+      vAlpha = smoothstep(0.0, 10.0, pos.y) * 0.8;
     }
   `;
 
     const fragmentShader = `
+    varying float vAlpha;
     uniform vec3 uColor;
     
     void main() {
-      // Create a round flake shape
+      // Motion-Blurred Streak Shape
       vec2 coord = gl_PointCoord * 2.0 - 1.0;
-      float d = length(coord);
       
-      // Soft alpha falloff
-      float alpha = 1.0 - smoothstep(0.4, 1.0, d);
+      // Stretch X and Y for a diagonal streak look (wind-driven)
+      float x = coord.x * 8.0 + coord.y * 4.0;
+      float y = coord.y * 1.5;
+      float d = length(vec2(x, y));
       
+      float alpha = 1.0 - smoothstep(0.2, 1.0, d);
       if (alpha < 0.01) discard;
       
-      gl_FragColor = vec4(uColor, alpha * 0.8);
+      gl_FragColor = vec4(uColor, alpha * vAlpha);
     }
   `;
 

@@ -190,24 +190,24 @@ export const BIOMES: BiomeData[] = [
     id: 'antarctica',
     name: 'Antarctica',
     config: {
-      colorSpace: '#a0c4ff',
-      colorHorizon: '#ffffff',
-      colorSun: '#ffffff',
-      lightIntensity: 4.5,
-      sunElevation: 0.1,
-      sunAzimuth: 1.5,
+      colorSpace: '#80a0ff',   // Deep cold blue for upper atmosphere
+      colorHorizon: '#cfd9df', // Grayish ice-blue horizon
+      colorSun: '#ffffff',     // Brilliant polar sun
+      lightIntensity: 6.0,     // High albedo reflection
+      sunElevation: 0.05,      // Low polar sun angle
+      sunAzimuth: -0.5,
       autoRotate: false,
-      distortionStrength: 0.05,
+      distortionStrength: 0.02,
       dustOpacity: 0,
       dustSpeed: 0,
       dustCount: 0,
       dustRadius: 0,
       dustColor: '#ffffff',
-      cloudColor: '#ffffff',
-      cloudOpacity: 0.8,
-      cloudCount: 30,
-      cloudAltitude: 40,
-      cloudSpeed: 0.02,
+      cloudColor: '#e2ebf0',   // Heavy snow clouds
+      cloudOpacity: 0.9,
+      cloudCount: 40,
+      cloudAltitude: 35,
+      cloudSpeed: 0.8,         // Fast moving storm clouds
       terrainColor: '#ffffff',
       terrainType: 'antarctica'
     }

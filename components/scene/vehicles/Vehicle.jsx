@@ -1,5 +1,5 @@
 import { memo, useMemo, useRef, useEffect, Suspense } from 'react'
-import { useFrame } from '@react-three/fiber'
+import { useFrame, useThree } from '@react-three/fiber'
 import { Gltf } from '@react-three/drei'
 import { useXR } from '@react-three/xr'
 import { Vector3, Quaternion, Euler, MathUtils } from 'three'
@@ -87,6 +87,34 @@ const Vehicle = (props) => {
 	const { body, color, roughness, rim, rim_diameter, rim_width, rim_color, rim_color_secondary, tire, tire_diameter, tire_muddiness, addons, lighting, isLocked, controlsRef, terrainType, onMoveStateChange, sharedPosRef } = config
 	const performanceDegraded = useGameStore((state) => state.performanceDegraded)
 	const isMobile = useGameStore((state) => state.isMobile)
+	const { camera } = useThree()
+
+	// 4x4 Karakteri için özel kamera yakınlığı ayarı
+	useEffect(() => {
+		if (!controlsRef?.current) return
+
+		// Aracı yakından takip etmek için mesafeleri kısıtla
+		const originalMin = controlsRef.current.minDistance
+		const originalMax = controlsRef.current.maxDistance
+
+		controlsRef.current.minDistance = 12
+		controlsRef.current.maxDistance = 45
+
+		// Eğer kamera çok uzaktaysa (başka karakterden geçiş yapıldıysa) kamerayı yaklaştır
+		const currentDist = camera.position.distanceTo(controlsRef.current.target)
+		if (currentDist > 45 || currentDist < 10) {
+			const direction = new Vector3().subVectors(camera.position, controlsRef.current.target).normalize()
+			// Yeni pozisyonu hesapla (25 birim uzaklık ideal)
+			camera.position.copy(controlsRef.current.target).add(direction.multiplyScalar(22))
+		}
+
+		return () => {
+			if (controlsRef.current) {
+				controlsRef.current.minDistance = originalMin
+				controlsRef.current.maxDistance = originalMax
+			}
+		}
+	}, [camera, controlsRef])
 
 	let isInXR = false
 	try {

@@ -70,7 +70,7 @@ export const Stats = () => {
   }, []);
 
   return (
-    <div className="absolute top-2 left-2 z-50 pointer-events-none flex flex-col items-center gap-1">
+    <div className="absolute top-2 left-2 z-50 pointer-events-none flex flex-col items-center gap-1 scale-110 md:scale-100 origin-top-left">
       <canvas ref={canvasRef} width={80} height={40} className="border border-white/10 rounded backdrop-blur-sm" />
       <span className="text-[10px] font-mono text-white tracking-widest">v1.0.0</span>
     </div>

@@ -9,9 +9,9 @@ interface BiomeSelectorProps {
 
 export const BiomeSelector: React.FC<BiomeSelectorProps> = ({ currentConfig, onSelect }) => {
   return (
-    <div className="flex flex-col items-end gap-1 pointer-events-auto">
-      <div className="text-[10px] font-mono text-white tracking-widest uppercase mb-1 font-bold drop-shadow-md">Target Biome</div>
-      <div className="flex flex-col gap-1">
+    <div className="flex flex-col items-end gap-1 pointer-events-auto bg-black/20 backdrop-blur-md p-3 rounded-2xl border border-white/5 shadow-xl">
+      <div className="text-[10px] font-mono text-white tracking-widest uppercase mb-1 font-bold drop-shadow-md opacity-80">Target Biome</div>
+      <div className="flex flex-col gap-1.5">
         {BIOMES.map((biome) => {
           const isActive = currentConfig.terrainType === biome.config.terrainType;
           return (

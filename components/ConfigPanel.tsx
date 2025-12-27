@@ -64,7 +64,7 @@ const ConfigPanel: React.FC<ConfigPanelProps> = ({ config, onChange, buttonClass
             {/* Panel Body - Centered Relative to Navbar Container */}
             <div className={`
                 absolute bottom-[calc(100%+16px)] left-1/2 -translate-x-1/2
-                bg-transparent border border-transparent p-4 rounded-xl backdrop-blur-0 shadow-none w-[85vw] sm:w-72 z-50 max-h-[60vh] overflow-y-auto custom-scrollbar origin-bottom
+                bg-zinc-900/90 border border-white/10 p-4 rounded-2xl backdrop-blur-xl shadow-2xl w-[90vw] sm:w-72 z-50 max-h-[70vh] overflow-y-auto custom-scrollbar origin-bottom
                 transition-all duration-300 ease-in-out 
                 ${isOpen ? 'opacity-100 scale-100 pointer-events-auto translate-y-0' : 'opacity-0 scale-95 pointer-events-none translate-y-2'}
             `}>

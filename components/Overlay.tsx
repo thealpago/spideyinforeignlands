@@ -75,7 +75,7 @@ const Overlay: React.FC<OverlayProps> = ({
     // Styles
     const ACTIVE_GRAY_STYLE = 'bg-white/10 text-white border-white/30 shadow-[0_0_15px_rgba(255,255,255,0.2)]';
     const INACTIVE_STYLE = 'text-white hover:text-white hover:bg-white/5 border-transparent';
-    const NAVBAR_BG_STYLE = 'bg-transparent backdrop-blur-0 border border-transparent';
+    const NAVBAR_BG_STYLE = 'bg-zinc-900/80 backdrop-blur-xl border border-white/10 shadow-2xl';
 
     // Centralized Panel State for Mutual Exclusivity
     const [activePanel, setActivePanel] = useState<string | null>(null);
@@ -113,14 +113,14 @@ const Overlay: React.FC<OverlayProps> = ({
                 {/* Footer Removed (LMB/RMB Instructions) */}
 
                 {/* NAV BAR */}
-                <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-auto max-w-[95vw] w-auto origin-bottom scale-[0.85] md:scale-100 transition-all duration-300">
-                    <div className={`flex flex-col md:flex-row items-center gap-1.5 p-1.5 ${NAVBAR_BG_STYLE} rounded-3xl transition-all duration-300`}>
+                <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-auto max-w-[98vw] w-auto origin-bottom scale-[0.95] md:scale-100 transition-all duration-300">
+                    <div className={`flex flex-row items-center gap-2 p-2 ${NAVBAR_BG_STYLE} rounded-3xl transition-all duration-300 shadow-xl`}>
 
                         {/* 1. Character Selection Group */}
                         <div className="flex overflow-x-auto max-w-full rounded-2xl p-1 gap-1 flex-shrink-0 no-scrollbar">
                             <button
                                 onClick={() => onCharacterChange('spider')}
-                                className={`whitespace-nowrap px-3 py-1.5 rounded-xl text-[11px] font-mono transition-all duration-200 flex-shrink-0 border ${character === 'spider' ? ACTIVE_GRAY_STYLE : INACTIVE_STYLE}`}
+                                className={`whitespace-nowrap px-4 py-2 rounded-xl text-[12px] md:text-[11px] font-mono transition-all duration-200 flex-shrink-0 border ${character === 'spider' ? ACTIVE_GRAY_STYLE : INACTIVE_STYLE}`}
                             >
                                 SPIDEY
                             </button>
@@ -209,7 +209,7 @@ const Overlay: React.FC<OverlayProps> = ({
                                 onChange={onConfigChange}
                                 isOpen={activePanel === 'config'}
                                 onToggle={() => togglePanel('config')}
-                                buttonClassName={`p-2 rounded-xl text-[11px] font-mono transition-all duration-200 flex-shrink-0 border ${INACTIVE_STYLE}`}
+                                buttonClassName={`p-2.5 rounded-xl text-[12px] md:text-[11px] font-mono transition-all duration-200 flex-shrink-0 border ${INACTIVE_STYLE}`}
                             />
 
                             {(character === 'spider' || character === 'g_spidey') ? (

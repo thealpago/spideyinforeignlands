@@ -229,6 +229,27 @@ const getFlatDesertHeight = (x: number, z: number): number => {
     return Math.sin(x * 0.5) * Math.cos(z * 0.5) * 0.05;
 };
 
+const getAntarcticaHeight = (x: number, z: number): number => {
+    let y = 0;
+    // Combine sharp ridges with crystalline blocks
+    const ridgeFreq = 0.03;
+    const ridgeNoise = Math.abs(Math.sin(x * ridgeFreq) * Math.cos(z * ridgeFreq));
+    y += Math.pow(1.0 - ridgeNoise, 3.0) * 12.0;
+
+    // Crystalline stepping
+    const blockSize = 20.0;
+    const qx = Math.floor(x / blockSize);
+    const qz = Math.floor(z / blockSize);
+    const crystalHash = Math.sin(qx * 12.9898 + qz * 78.233) * 43758.5453;
+    const crystalVal = crystalHash - Math.floor(crystalHash);
+    if (crystalVal > 0.7) y += 4.0;
+
+    // Frosty surface noise
+    y += (Math.sin(x * 0.4) + Math.cos(z * 0.4)) * 0.3;
+
+    return y;
+};
+
 // Helper for smoothstep (missing in MathUtils in some versions, ensuring availability)
 function smoothstep(min: number, max: number, value: number) {
     var x = Math.max(0, Math.min(1, (value - min) / (max - min)));
@@ -249,6 +270,7 @@ export const getTerrainHeight = (x: number, z: number, type: TerrainType = 'sand
     if (type === 'water_planet') return getWaterPlanetHeight(x, z);
     if (type === 'grass') return getGrassHeight(x, z);
     if (type === 'flat_desert') return getFlatDesertHeight(x, z);
+    if (type === 'antarctica') return getAntarcticaHeight(x, z);
     return getDuneHeight(x, z);
 };
 

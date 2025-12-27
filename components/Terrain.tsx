@@ -14,10 +14,12 @@ import {
   OasisMaterial,
   MatrixMaterial,
   RainMaterial,
-  WaterPlanetMaterial
+  WaterPlanetMaterial,
+  AntarcticaMaterial
 } from './Materials';
 import { WaterMaterial } from './Materials/BiomeMaterials';
 import { RainParticles } from './RainParticles';
+import { SnowParticles } from './SnowParticles';
 import { WetRocks } from './WetRocks';
 import { Grass } from './Grass';
 import { TerrainType } from '../types';
@@ -172,6 +174,7 @@ const TerrainChunk: React.FC<{
       case 'oasis': return <OasisMaterial color={color} />;
       case 'rain': return <RainMaterial color={color} />;
       case 'water_planet': return <WaterPlanetMaterial color={color} offset={[chunkX * size, chunkZ * size]} />;
+      case 'antarctica': return <AntarcticaMaterial color={color} />;
       case 'grass': return <SandMaterial color={color} roughness={1} />;
       case 'tech':
       case 'grid': return <MatrixMaterial color={color} />;
@@ -262,6 +265,7 @@ const InfiniteTerrain: React.FC<InfiniteTerrainProps> = ({ color = "#f4a460", ty
 
       {/* Global Particles (Atmosphere) - Rendered once, moved via shader usually */}
       {type === 'rain' && <RainParticles />}
+      {type === 'antarctica' && <SnowParticles />}
     </group>
   );
 };

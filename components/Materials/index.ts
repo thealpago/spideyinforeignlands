@@ -10,3 +10,4 @@ export * from './OasisMaterial';
 export * from './VolcanoMaterial';
 export * from './RainMaterial';
 export * from './WaterPlanetMaterial';
+export * from './AntarcticaMaterial';

@@ -1,6 +1,6 @@
 import { Vector3 } from "three";
 
-export type TerrainType = 'grid' | 'sand' | 'ice' | 'canyon' | 'crystal' | 'tech' | 'moon' | 'mars' | 'obsidian' | 'volcano' | 'oasis' | 'rain' | 'water_planet' | 'grass' | 'flat_desert';
+export type TerrainType = 'grid' | 'sand' | 'ice' | 'canyon' | 'crystal' | 'tech' | 'moon' | 'mars' | 'obsidian' | 'volcano' | 'oasis' | 'rain' | 'water_planet' | 'grass' | 'flat_desert' | 'antarctica';
 
 export enum BiomeType {
   DESERT = 'DESERT',

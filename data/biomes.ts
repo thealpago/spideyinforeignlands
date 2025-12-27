@@ -14,7 +14,6 @@ export const BIOMES: BiomeData[] = [
       colorSpace: '#87CEEB',
       colorHorizon: '#f5deb3',
       colorSun: '#ffffff',
-      // Lower elevation to see sun in view (approx 18 degrees)
       sunElevation: 0.2,
       sunAzimuth: 0.0,
       autoRotate: false,
@@ -37,25 +36,25 @@ export const BIOMES: BiomeData[] = [
     id: 'rainland',
     name: 'RainLand',
     config: {
-      colorSpace: '#4a5e6a', // Lighter storm blue-grey
-      colorHorizon: '#6e7a88', // Lighter slate horizon
-      colorSun: '#dbeeff',     // Bright cold light
-      lightIntensity: 4.5,     // Increased intensity
-      sunElevation: 0.8,       // High overhead (overcast)
+      colorSpace: '#4a5e6a',
+      colorHorizon: '#6e7a88',
+      colorSun: '#dbeeff',
+      lightIntensity: 4.5,
+      sunElevation: 0.8,
       sunAzimuth: 0.5,
       autoRotate: false,
       distortionStrength: 0.1,
-      dustOpacity: 0,          // Use RainParticles instead
+      dustOpacity: 0,
       dustSpeed: 0,
       dustCount: 0,
       dustRadius: 0,
       dustColor: '#000000',
-      cloudColor: '#2b3035',   // Darkish storm clouds, but visible
+      cloudColor: '#2b3035',
       cloudOpacity: 0.9,
-      cloudCount: 40,          // Dense clouds
+      cloudCount: 40,
       cloudAltitude: 50,
-      cloudSpeed: 0.5,         // Fast moving storm
-      terrainColor: '#5a5a5a', // Brighter grey rock so it captures light better
+      cloudSpeed: 0.5,
+      terrainColor: '#5a5a5a',
       terrainType: 'rain'
     }
   },
@@ -63,26 +62,26 @@ export const BIOMES: BiomeData[] = [
     id: 'millers',
     name: 'Miller\'s Planet',
     config: {
-      colorSpace: '#bfd1e5',   // Hazy Sky Blue (Replaces Black Void)
-      colorHorizon: '#aaccff', // Light Blue Horizon (Replaces Black Horizon)
-      colorSun: '#ffffff',     // Bright White Sun
-      lightIntensity: 2.5,     // Normal daylight intensity
-      sunElevation: 0.35,      // Mid-day
+      colorSpace: '#bfd1e5',
+      colorHorizon: '#aaccff',
+      colorSun: '#ffffff',
+      lightIntensity: 2.5,
+      sunElevation: 0.35,
       sunAzimuth: 0.2,
-      autoRotate: true,        // Slow rotation
-      hasBlackHole: false,     // DISABLED: Removes 3D Model
-      distortionStrength: 0.3, // High heat/water haze
-      dustOpacity: 0.2,        // Light Mist
+      autoRotate: true,
+      hasBlackHole: false,
+      distortionStrength: 0.3,
+      dustOpacity: 0.2,
       dustSpeed: 0.1,
-      dustCount: 200,          // Atmospheric particles
+      dustCount: 200,
       dustRadius: 60,
       dustColor: '#ffffff',
-      cloudColor: '#ffffff',   // Restore Clouds
+      cloudColor: '#ffffff',
       cloudOpacity: 0.5,
       cloudCount: 20,
       cloudAltitude: 60,
       cloudSpeed: 0.08,
-      terrainColor: '#005577', // Deep Ocean Blue
+      terrainColor: '#005577',
       terrainType: 'water_planet'
     }
   },
@@ -90,25 +89,25 @@ export const BIOMES: BiomeData[] = [
     id: 'grass',
     name: 'Grass Terrain',
     config: {
-      colorSpace: '#87CEEB',   // Sky Blue
-      colorHorizon: '#c3e8bd', // Light Green Horizon
-      colorSun: '#ffffff',     // White Sun
-      lightIntensity: 3.5,     // Bright Daylight
-      sunElevation: 0.6,       // High Sun
+      colorSpace: '#87CEEB',
+      colorHorizon: '#c3e8bd',
+      colorSun: '#ffffff',
+      lightIntensity: 3.5,
+      sunElevation: 0.6,
       sunAzimuth: 0.1,
       autoRotate: false,
-      distortionStrength: 0.1, // Clear air
-      dustOpacity: 0.3,        // Pollen/Seeds
+      distortionStrength: 0.1,
+      dustOpacity: 0.3,
       dustSpeed: 0.1,
       dustCount: 300,
       dustRadius: 50,
-      dustColor: '#ffffff',    // White specs
-      cloudColor: '#ffffff',   // White fluffy clouds
+      dustColor: '#ffffff',
+      cloudColor: '#ffffff',
       cloudOpacity: 0.9,
       cloudCount: 15,
       cloudAltitude: 50,
       cloudSpeed: 0.05,
-      terrainColor: '#2d4c1e', // Dark Green Ground (Base)
+      terrainColor: '#2d4c1e',
       terrainType: 'grass'
     }
   },
@@ -116,25 +115,24 @@ export const BIOMES: BiomeData[] = [
     id: 'mars',
     name: 'Mars Surface',
     config: {
-      colorSpace: '#4a2517', // Dark reddish brown space/upper sky
-      colorHorizon: '#c97d5d', // Dusty orange horizon
-      colorSun: '#ffccaa',     // Pale yellowish sun
-      // Mars sun is smaller and further, often lower in visual perception
+      colorSpace: '#4a2517',
+      colorHorizon: '#c97d5d',
+      colorSun: '#ffccaa',
       sunElevation: 0.15,
       sunAzimuth: 0.0,
       autoRotate: false,
-      distortionStrength: 0.4, // Heat haze
-      dustOpacity: 0.8,        // High visibility
-      dustSpeed: 2.5,          // Fast wind
-      dustCount: 4000,         // Dense atmosphere
-      dustRadius: 80,          // Wide radius
-      dustColor: '#e3ae8f',    // Lighter dust color to stand out against ground
-      cloudColor: '#e0b596',   // Dust clouds
+      distortionStrength: 0.4,
+      dustOpacity: 0.8,
+      dustSpeed: 2.5,
+      dustCount: 4000,
+      dustRadius: 80,
+      dustColor: '#e3ae8f',
+      cloudColor: '#e0b596',
       cloudOpacity: 0.4,
       cloudCount: 6,
       cloudAltitude: 60,
       cloudSpeed: 0.2,
-      terrainColor: '#b44d28', // Iron Oxide
+      terrainColor: '#b44d28',
       terrainType: 'mars'
     }
   },
@@ -186,6 +184,32 @@ export const BIOMES: BiomeData[] = [
       cloudSpeed: 0.03,
       terrainColor: '#c29260',
       terrainType: 'flat_desert'
+    }
+  },
+  {
+    id: 'antarctica',
+    name: 'Antarctica',
+    config: {
+      colorSpace: '#a0c4ff',
+      colorHorizon: '#ffffff',
+      colorSun: '#ffffff',
+      lightIntensity: 4.5,
+      sunElevation: 0.1,
+      sunAzimuth: 1.5,
+      autoRotate: false,
+      distortionStrength: 0.05,
+      dustOpacity: 0,
+      dustSpeed: 0,
+      dustCount: 0,
+      dustRadius: 0,
+      dustColor: '#ffffff',
+      cloudColor: '#ffffff',
+      cloudOpacity: 0.8,
+      cloudCount: 30,
+      cloudAltitude: 40,
+      cloudSpeed: 0.02,
+      terrainColor: '#ffffff',
+      terrainType: 'antarctica'
     }
   }
 ];

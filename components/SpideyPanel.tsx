@@ -117,8 +117,8 @@ export const SpideyPanel: React.FC<SpideyPanelProps> = ({
         <div className="pointer-events-auto">
             {/* Panel Body - Centered Relative to Navbar Container */}
             <div className={`
-                absolute bottom-[calc(100%+16px)] left-1/2 -translate-x-1/2
-                bg-zinc-900/90 border border-white/10 p-4 rounded-2xl backdrop-blur-xl shadow-2xl w-[90vw] sm:w-80 z-50 max-h-[75vh] overflow-y-auto custom-scrollbar origin-bottom
+                absolute bottom-[calc(100%+20px)] left-1/2 -translate-x-1/2
+                bg-zinc-900/90 border border-white/10 p-4 rounded-2xl backdrop-blur-xl shadow-2xl w-[90vw] sm:w-80 z-50 max-h-[60vh] overflow-y-auto custom-scrollbar origin-bottom
                 transition-all duration-300 ease-in-out 
                 ${isOpen ? 'opacity-100 scale-100 pointer-events-auto translate-y-0' : 'opacity-0 scale-95 pointer-events-none translate-y-2'}
             `}>

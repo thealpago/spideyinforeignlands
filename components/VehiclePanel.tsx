@@ -128,8 +128,8 @@ export const VehiclePanel: React.FC<VehiclePanelProps> = ({ config, onChange, bu
     return (
         <div className="pointer-events-auto">
             <div className={`
-                absolute bottom-[calc(100%+20px)] left-1/2 -translate-x-1/2
-                bg-zinc-900/90 border border-white/10 p-6 rounded-3xl backdrop-blur-xl shadow-2xl w-[90vw] sm:w-[360px] z-50 max-h-[75vh] overflow-y-auto custom-scrollbar origin-bottom
+                absolute bottom-[calc(100%+30px)] left-1/2 -translate-x-1/2
+                bg-zinc-900/90 border border-white/10 p-6 rounded-3xl backdrop-blur-xl shadow-2xl w-[90vw] sm:w-[360px] z-50 max-h-[65vh] overflow-y-auto custom-scrollbar origin-bottom
                 transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1)
                 ${isOpen ? 'opacity-100 scale-100 translate-y-0 rotate-0' : 'opacity-0 scale-95 translate-y-4 rotate-1 pointer-events-none'}
             `}>

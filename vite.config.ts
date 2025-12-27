@@ -5,8 +5,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, (process as any).cwd(), '');
   return {
-    // CRITICAL: Set to relative path for Electron file:// protocol compatibility
-    base: './',
+    // Set base to the repository name for correct asset loading on GitHub Pages
+    base: '/Spidey-in-Foreignlands/',
     plugins: [react()],
     define: {
       // Safely replace process.env.API_KEY with the actual value during build

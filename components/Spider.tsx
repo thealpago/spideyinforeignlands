@@ -20,53 +20,53 @@ interface SpiderProps {
   sharedPosRef?: React.MutableRefObject<Vector3>;
 }
 
-const Spider: React.FC<SpiderProps> = ({ 
-    target, 
-    mousePosRef, 
-    onMoveStateChange, 
-    isLocked,
-    isThirdPerson = false,
-    controlsRef, 
-    visualConfig, 
-    physicsConfig,
-    terrainType,
-    sharedPosRef
+const Spider: React.FC<SpiderProps> = ({
+  target,
+  mousePosRef,
+  onMoveStateChange,
+  isLocked,
+  isThirdPerson = false,
+  controlsRef,
+  visualConfig,
+  physicsConfig,
+  terrainType,
+  sharedPosRef
 }) => {
   const dustRef = useRef<FootDustHandle>(null);
   const { camera } = useThree();
 
   // Automatic Camera Switching Logic
   useEffect(() => {
-     if (!controlsRef?.current) return;
-     
-     if (isThirdPerson || terrainType === 'canyon') {
-         // Switch to Third Person (Close, low, behind)
-         controlsRef.current.maxPolarAngle = Math.PI / 2 - 0.1; 
-         controlsRef.current.minDistance = 5;
-         controlsRef.current.maxDistance = 30; 
-     } else {
-         controlsRef.current.maxPolarAngle = Math.PI / 2 - 0.05;
-         controlsRef.current.minDistance = 10;
-         controlsRef.current.maxDistance = 500;
-     }
+    if (!controlsRef?.current) return;
+
+    if (isThirdPerson || terrainType === 'canyon') {
+      // Switch to Third Person (Close, low, behind)
+      controlsRef.current.maxPolarAngle = Math.PI / 2 - 0.1;
+      controlsRef.current.minDistance = 5;
+      controlsRef.current.maxDistance = 30;
+    } else {
+      controlsRef.current.maxPolarAngle = Math.PI / 2 - 0.05;
+      controlsRef.current.minDistance = 10;
+      controlsRef.current.maxDistance = 500;
+    }
   }, [terrainType, isThirdPerson, camera, controlsRef]);
 
 
   // Callback to trigger dust when a foot lands
   const onStep = (pos: Vector3) => {
     if (dustRef.current) {
-        dustRef.current.burst(pos);
+      dustRef.current.burst(pos);
     }
   };
 
   const { groupRef, headRef, bodyMeshRef, legs, legConfigs } = useSpiderController(
-      target, 
-      mousePosRef, 
-      onMoveStateChange, 
-      physicsConfig,
-      terrainType,
-      onStep,
-      sharedPosRef
+    target,
+    mousePosRef,
+    onMoveStateChange,
+    physicsConfig,
+    terrainType,
+    onStep,
+    sharedPosRef
   );
 
   useFrame((state) => {
@@ -78,10 +78,10 @@ const Spider: React.FC<SpiderProps> = ({
       // Smooth follow logic:
       // Maintain the relative offset between camera and target
       const offset = camera.position.clone().sub(controls.target);
-      
+
       // Update OrbitControls target to match spider
       controls.target.lerp(targetPos, 0.1);
-      
+
       // Move camera to keep the same relative view
       camera.position.addVectors(controls.target, offset);
     }
@@ -90,34 +90,34 @@ const Spider: React.FC<SpiderProps> = ({
   return (
     <>
       <group ref={groupRef}>
-        <SpiderBody 
-            headRef={headRef} 
-            bodyMeshRef={bodyMeshRef} 
-            visualConfig={visualConfig} 
-            abdomenScale={physicsConfig.abdomenScale}
-            hullScale={physicsConfig.hullScale}
+        <SpiderBody
+          headRef={headRef as any}
+          bodyMeshRef={bodyMeshRef as any}
+          visualConfig={visualConfig}
+          abdomenScale={physicsConfig.abdomenScale}
+          hullScale={physicsConfig.hullScale}
         />
-        
+
         {/* Shoulder Mounts Visuals */}
         {legConfigs.map(config => (
-            <mesh key={`mount-${config.id}`} position={config.originOffset} visible={visualConfig.showBody}>
-                <cylinderGeometry args={[0.15, 0.2, 0.2, 8]} />
-                <meshStandardMaterial color="#333" />
-            </mesh>
+          <mesh key={`mount-${config.id}`} position={config.originOffset} visible={visualConfig.showBody}>
+            <cylinderGeometry args={[0.15, 0.2, 0.2, 8]} />
+            <meshStandardMaterial color="#333" />
+          </mesh>
         ))}
       </group>
 
       {/* -- Legs -- */}
       {legs.map((legState, i) => {
-          return (
-             <SpiderLeg 
-                key={i} 
-                parentRef={groupRef} 
-                config={legConfigs[i]} 
-                legState={legState} 
-                visualConfig={visualConfig}
-             />
-          );
+        return (
+          <SpiderLeg
+            key={i}
+            parentRef={groupRef as any}
+            config={legConfigs[i]}
+            legState={legState}
+            visualConfig={visualConfig}
+          />
+        );
       })}
 
       {/* -- Footstep Dust System -- */}

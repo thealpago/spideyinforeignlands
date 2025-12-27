@@ -4,19 +4,19 @@ import { InstancedMesh, Object3D, DoubleSide, Color, PlaneGeometry } from 'three
 import { getTerrainHeight } from '../utils/helpers';
 
 interface GrassProps {
-    offset: [number, number];
-    size: number;
+  offset: [number, number];
+  size: number;
 }
 
 export const Grass: React.FC<GrassProps> = ({ offset, size }) => {
   const meshRef = useRef<InstancedMesh>(null);
   const time = useRef(0);
   const dummy = useMemo(() => new Object3D(), []);
-  
+
   // Density relative to chunk size
   // Previous: 150000 for 960 size (~0.16 per unit sq)
   // New Chunk: 120 size. 120*120 * 0.16 ~= 2300 instances per chunk
-  const COUNT = 3000; 
+  const COUNT = 3000;
 
   // Create geometry and translate it imperatively to shift pivot
   const grassGeometry = useMemo(() => {
@@ -30,27 +30,27 @@ export const Grass: React.FC<GrassProps> = ({ offset, size }) => {
     if (!meshRef.current) return;
 
     for (let i = 0; i < COUNT; i++) {
-        // Local position
-        const lx = (Math.random() - 0.5) * size;
-        const lz = (Math.random() - 0.5) * size;
-        
-        // World position for height calculation
-        const wx = lx + offset[0];
-        const wz = lz + offset[1];
-        
-        const y = getTerrainHeight(wx, wz, 'grass');
-        
-        dummy.position.set(lx, y, lz);
-        dummy.rotation.set(0, Math.random() * Math.PI, 0);
-        
-        // Randomize scale for variety (Height and Width)
-        const heightScale = 0.8 + Math.random() * 0.8;
-        dummy.scale.set(heightScale, heightScale, heightScale);
-        
-        dummy.updateMatrix();
-        meshRef.current.setMatrixAt(i, dummy.matrix);
+      // Local position
+      const lx = (Math.random() - 0.5) * size;
+      const lz = (Math.random() - 0.5) * size;
+
+      // World position for height calculation
+      const wx = lx + offset[0];
+      const wz = lz + offset[1];
+
+      const y = getTerrainHeight(wx, wz, 'grass');
+
+      dummy.position.set(lx, y, lz);
+      dummy.rotation.set(0, Math.random() * Math.PI, 0);
+
+      // Randomize scale for variety (Height and Width)
+      const heightScale = 0.8 + Math.random() * 0.8;
+      dummy.scale.set(heightScale, heightScale, heightScale);
+
+      dummy.updateMatrix();
+      meshRef.current.setMatrixAt(i, dummy.matrix);
     }
-    
+
     meshRef.current.instanceMatrix.needsUpdate = true;
   }, [offset, size]);
 
@@ -58,7 +58,7 @@ export const Grass: React.FC<GrassProps> = ({ offset, size }) => {
     time.current += delta;
     const mat = meshRef.current?.material as any;
     if (mat && mat.userData && mat.userData.shader) {
-        mat.userData.shader.uniforms.uTime.value = time.current;
+      mat.userData.shader.uniforms.uTime.value = time.current;
     }
   });
 
@@ -69,11 +69,11 @@ export const Grass: React.FC<GrassProps> = ({ offset, size }) => {
         color="#4caf50" // Base healthy grass color
         transparent
         side={DoubleSide}
-        onBeforeCompile={(shader) => {
+        onBeforeCompile={(shader: any) => {
           shader.uniforms.uTime = { value: 0 };
-          
+
           if (meshRef.current) {
-             (meshRef.current.material as any).userData = { shader };
+            (meshRef.current.material as any).userData = { shader };
           }
 
           shader.vertexShader = `

@@ -39,22 +39,22 @@ export const TERRAIN_CAMERA_CONFIG = {
  * @param {THREE.Camera} camera - Güncellenecek kamera
  * @param {Object} controls - Güncellenecek kontrol objesi
  */
-export const applyTerrainCamera = (camera, controls) => {
+export const applyTerrainCamera = (camera: any, controls: any) => {
   const config = TERRAIN_CAMERA_CONFIG;
-  
+
   // Kamera pozisyonu ve rotasyonu
   camera.position.set(
     config.camera.position.x,
     config.camera.position.y,
     config.camera.position.z
   );
-  
+
   camera.rotation.set(
     config.camera.rotation.x,
     config.camera.rotation.y,
     config.camera.rotation.z
   );
-  
+
   // PerspectiveCamera özellikleri
   if (camera.isPerspectiveCamera) {
     camera.fov = config.camera.fov;
@@ -63,17 +63,17 @@ export const applyTerrainCamera = (camera, controls) => {
     camera.far = config.camera.far;
     camera.updateProjectionMatrix();
   }
-  
+
   // Hedef noktaya bak
   if (config.target) {
     const target = new Vector3(config.target.x, config.target.y, config.target.z);
     camera.lookAt(target);
   }
-  
+
   // Kontrol ayarları
   if (controls && config.controls) {
     Object.assign(controls, config.controls);
   }
-  
+
   return { camera, controls };
 };

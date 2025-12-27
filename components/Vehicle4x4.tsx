@@ -246,6 +246,7 @@ const Vehicle4x4: React.FC<Vehicle4x4Props> = ({
 
     return (
         <group ref={groupRef}>
+            {/* @ts-ignore */}
             <EngineAudio isActive={isLocked} />
             <primitive object={bodyScene} scale={CHASSIS_SCALE} />
 

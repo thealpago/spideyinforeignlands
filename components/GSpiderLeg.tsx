@@ -13,6 +13,7 @@ const SolarPanel: React.FC<{ visualConfig: VisualConfig }> = ({ visualConfig }) 
   });
 
   return (
+    // @ts-ignore
     <animated.group
       position={[0, 0.12, 0]} // On Top of Leg
       rotation={[0, 0, 0]}

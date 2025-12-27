@@ -60,6 +60,7 @@ export const useSpiderController = (
     isJumping: false,
     isChargingJump: false,
     chargeStartTime: 0,
+    nextGazeTime: 0,
   });
 
   // -- Jump Mechanics (Charge & Release) --

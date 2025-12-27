@@ -86,8 +86,8 @@ const GSpider: React.FC<GSpiderProps> = ({
     <>
       <group ref={groupRef}>
         <GSpiderBody
-          headRef={headRef}
-          bodyMeshRef={bodyMeshRef}
+          headRef={headRef as any}
+          bodyMeshRef={bodyMeshRef as any}
           visualConfig={visualConfig}
           hullScale={physicsConfig.hullScale}
           abdomenScale={physicsConfig.abdomenScale}

@@ -104,7 +104,7 @@ const Overlay: React.FC<OverlayProps> = ({
 
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-10 p-4 md:p-8 flex flex-col justify-between">
                 {/* Top Header: Biome Selector */}
-                <div className="flex justify-end items-start w-full mt-24 md:mt-8 pr-4">
+                <div className="flex justify-end items-start w-full mt-16 md:mt-0">
                     <div className="pointer-events-auto">
                         <BiomeSelector currentConfig={config} onSelect={onConfigChange} />
                     </div>
@@ -269,22 +269,7 @@ const Overlay: React.FC<OverlayProps> = ({
                 {/* 3. G-Spider HUD (Bottom Left) */}
                 {character === 'g_spidey' && <GSpiderHUD />}
 
-                {/* Terrain Camera Toggle Button (Bottom Left) */}
-                <div className="absolute bottom-4 md:bottom-8 left-4 md:left-8 pointer-events-auto z-40">
-                    <button
-                        onClick={toggleTerrainCamera}
-                        className={`p-2.5 rounded-xl transition-all duration-300 group border flex-shrink-0 ${terrainCameraEnabled ? ACTIVE_GRAY_STYLE : INACTIVE_STYLE}`}
-                        title={terrainCameraEnabled ? "Switch to Orbit Camera" : "Switch to Terrain Camera"}
-                    >
-                        <div className="relative w-4 h-4 flex items-center justify-center text-current">
-                            {/* Camera/terrain icon */}
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
-                                <circle cx="12" cy="13" r="4" />
-                            </svg>
-                        </div>
-                    </button>
-                </div>
+
             </div>
         </>
     );

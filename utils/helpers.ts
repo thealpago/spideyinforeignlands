@@ -231,29 +231,23 @@ const getFlatDesertHeight = (x: number, z: number): number => {
 
 const getAntarcticaHeight = (x: number, z: number): number => {
     // 1. Vast plains with subtle variations
-    let y = fbm(x * 0.005, z * 0.005, 4, 0.5, 2.0) * 8.0;
+    let y = fbm(x * 0.005, z * 0.005, 4, 0.5, 2.0) * 5.0;
 
     // 2. Sastrugi (Wind-carved snow dunes)
-    // Stretched noise along a wind axis (diagonal)
     const windAngle = 0.7;
     const wx = x * Math.cos(windAngle) - z * Math.sin(windAngle);
     const wz = x * Math.sin(windAngle) + z * Math.cos(windAngle);
 
-    // Anisotropic noise pattern for wind erosion
-    const sastrugi = Math.pow(Math.abs(Math.sin(wx * 0.08 + noise(wz * 0.05, wx * 0.02) * 2.0)), 2.5);
-    const sastrugiMask = smoothstep(0.2, 0.8, noise(x * 0.01, z * 0.01));
-    y += sastrugi * 2.8 * sastrugiMask;
+    const sastrugi = Math.pow(Math.abs(Math.sin(wx * 0.08)), 2.5);
+    const sastrugiMask = smoothstep(0.3, 0.7, noise(x * 0.01, z * 0.01));
+    y += sastrugi * 2.5 * sastrugiMask;
 
-    // 3. Deep Crevasses (Fractures)
-    // Using inverted ridge noise for narrow cracks
-    const crevasseNoise = 1.0 - Math.abs(fbm(x * 0.012, z * 0.012, 2, 0.5, 2.0) * 2.0 - 1.0);
-    if (crevasseNoise > 0.96) {
-        const depth = smoothstep(0.96, 1.0, crevasseNoise);
-        y -= depth * 40.0; // Very deep fractures
+    // 3. Crevasses (Less deep)
+    const crevasseNoise = 1.0 - Math.abs(fbm(x * 0.015, z * 0.015, 2, 0.5, 2.0) * 2.0 - 1.0);
+    if (crevasseNoise > 0.97) {
+        const depth = smoothstep(0.97, 1.0, crevasseNoise);
+        y -= depth * 15.0;
     }
-
-    // 4. High-frequency granular ripple
-    y += noise(x * 0.6, z * 0.6) * 0.15;
 
     return y;
 };

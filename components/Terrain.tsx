@@ -265,7 +265,6 @@ const InfiniteTerrain: React.FC<InfiniteTerrainProps> = ({ color = "#f4a460", ty
 
       {/* Global Particles (Atmosphere) - Rendered once, moved via shader usually */}
       {type === 'rain' && <RainParticles />}
-      {type === 'antarctica' && <SnowParticles />}
     </group>
   );
 };

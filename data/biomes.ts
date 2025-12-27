@@ -193,8 +193,8 @@ export const BIOMES: BiomeData[] = [
       colorSpace: '#80a0ff',   // Deep cold blue for upper atmosphere
       colorHorizon: '#cfd9df', // Grayish ice-blue horizon
       colorSun: '#ffffff',     // Brilliant polar sun
-      lightIntensity: 6.0,     // High albedo reflection
-      sunElevation: 0.05,      // Low polar sun angle
+      lightIntensity: 3.5,     // Reduced reflection intensity
+      sunElevation: 0.1,       // Slightly higher for better ground detail
       sunAzimuth: -0.5,
       autoRotate: false,
       distortionStrength: 0.02,

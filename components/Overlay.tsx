@@ -104,7 +104,7 @@ const Overlay: React.FC<OverlayProps> = ({
 
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-10 p-4 md:p-8 flex flex-col justify-between">
                 {/* Top Header: Biome Selector */}
-                <div className="flex justify-end items-start w-full mt-16 md:mt-0">
+                <div className="flex justify-end items-start w-full mt-24 md:mt-8 pr-4">
                     <div className="pointer-events-auto">
                         <BiomeSelector currentConfig={config} onSelect={onConfigChange} />
                     </div>
@@ -113,8 +113,8 @@ const Overlay: React.FC<OverlayProps> = ({
                 {/* Footer Removed (LMB/RMB Instructions) */}
 
                 {/* NAV BAR */}
-                <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-auto max-w-[98vw] w-auto origin-bottom scale-[0.95] md:scale-100 transition-all duration-300">
-                    <div className={`flex flex-row items-center gap-2 p-2 ${NAVBAR_BG_STYLE} rounded-3xl transition-all duration-300 shadow-xl`}>
+                <div className="absolute bottom-24 md:bottom-12 left-1/2 -translate-x-1/2 z-50 pointer-events-auto max-w-[98vw] w-auto origin-bottom scale-[0.9] md:scale-100 transition-all duration-300">
+                    <div className={`flex flex-row items-center gap-1.5 p-2 ${NAVBAR_BG_STYLE} rounded-3xl transition-all duration-300 shadow-2xl border-white/20`}>
 
                         {/* 1. Character Selection Group */}
                         <div className="flex overflow-x-auto max-w-full rounded-2xl p-1 gap-1 flex-shrink-0 no-scrollbar">
